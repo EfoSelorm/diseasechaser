@@ -5,8 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DiseaseChaser — Global Health Advisory &amp; Consultancy | Dr Michael Selorm Avumegah</title>
 <meta name="description" content="DiseaseChaser is the independent global health advisory and consultancy founded by Dr Michael Selorm Avumegah. Fifteen years across outbreak surveillance, vaccine development standards and biospecimen stewardship — from Buruli ulcer fieldwork in Ghana to Nipah, mpox and Marburg preparedness.">
+<meta name="keywords" content="global health advisory, outbreak preparedness consultant, vaccine R&amp;D advisor, biospecimen stewardship, epidemic preparedness, neglected tropical diseases consultant, Michael Selorm Avumegah">
+<meta name="author" content="Dr Michael Selorm Avumegah">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://efoselorm.github.io/diseasechaser/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://efoselorm.github.io/diseasechaser/">
+<meta property="og:site_name" content="DiseaseChaser">
 <meta property="og:title" content="DiseaseChaser — Dr Michael Selorm Avumegah">
 <meta property="og:description" content="Independent global health advisory on outbreak preparedness, vaccine development standards and biospecimen stewardship.">
+<meta property="og:image" content="https://efoselorm.github.io/diseasechaser/assets/hero.jpg">
+<meta property="og:image:alt" content="Dr Michael Selorm Avumegah, founder of DiseaseChaser">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DiseaseChaser — Dr Michael Selorm Avumegah">
+<meta name="twitter:description" content="Independent global health advisory on outbreak preparedness, vaccine development standards and biospecimen stewardship.">
+<meta name="twitter:image" content="https://efoselorm.github.io/diseasechaser/assets/hero.jpg">
+<meta name="twitter:site" content="@Avumegah">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2314181c'/><path d='M5 22 L11 22 L14 10 L18 26 L21 18 L27 18' stroke='%23177a2a' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -219,6 +233,11 @@ nav.main a:hover { color: var(--ink); border-color: var(--accent); }
 
 /* ---------- Practice — flattened, list-forward, no cards ---------- */
 .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0; background: none; border: none; border-top: 1px solid var(--line); margin-top: var(--space-12); }
+.tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-10); margin-top: var(--space-12); }
+.tier { border-top: 2px solid var(--accent); padding-top: var(--space-5); }
+.tier h3 { margin-top: var(--space-2); }
+.tier-meta { color: var(--muted); font-size: var(--text-sm); text-transform: uppercase; letter-spacing: 0.04em; margin: var(--space-1) 0 var(--space-3); }
+.tier ul { margin-top: var(--space-3); padding-left: var(--space-5); font-size: var(--text-sm); color: var(--muted); }
 .card { background: none; padding: var(--space-8) var(--space-6) var(--space-8) 0; display: flex; flex-direction: column; gap: var(--space-3); border-bottom: 1px solid var(--line); border-right: 1px solid transparent; transition: none; }
 .card:nth-child(odd) { border-right: 1px solid var(--line); padding-left: 0; }
 .card:nth-child(even) { padding-left: var(--space-8); }
@@ -329,6 +348,10 @@ footer.site .wrap { display: flex; flex-wrap: wrap; gap: var(--space-4); justify
 footer.site a { color: var(--muted); text-decoration: none; }
 footer.site a:hover { color: var(--ink); }
 .draftnote { margin-top: var(--space-4); max-width: 70ch; line-height: 1.6; }
+.disclosure { margin-top: var(--space-10); padding: var(--space-6); border: 1px solid var(--line); background: var(--surface); }
+.disclosure .eyebrow { margin-bottom: var(--space-2); }
+.disclosure p:not(.eyebrow) { font-size: var(--text-sm); color: var(--muted); line-height: 1.6; max-width: 62ch; margin: 0; }
+footer.site .independence { font-size: var(--text-xs); color: var(--muted); line-height: 1.6; max-width: 78ch; margin-top: var(--space-3); }
 
 /* ---------- Reveal ---------- */
 .rv { opacity: 0; transform: translateY(10px); transition: opacity .6s ease, transform .6s ease; }
@@ -556,17 +579,52 @@ footer.site a:hover { color: var(--ink); }
         </ul>
       </article>
 
-      <article class="card rv">
-        <span class="num">06</span>
-        <h3>How engagements usually run</h3>
-        <p>Three shapes, depending on how far along the decision is.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ENGAGEMENT TIERS ============ -->
+<section id="engagement">
+  <div class="wrap">
+    <p class="eyebrow">How we work together</p>
+    <h2 style="font-size:var(--text-xl);max-width:24ch">Three ways to start, depending on how far along the decision is.</h2>
+
+    <div class="tiers">
+      <article class="tier rv">
+        <span class="num">01</span>
+        <h3>Briefing</h3>
+        <p class="tier-meta">Half a day</p>
+        <p>One question, answered honestly. Suited to a single decision point — a go/no-go call, a board question, a second opinion before a commitment is made.</p>
         <ul>
-          <li><strong>Briefing</strong> — half a day, one question answered honestly</li>
-          <li><strong>Review</strong> — four to eight weeks, written findings</li>
-          <li><strong>Standing advisor</strong> — retained seat on a board or consortium</li>
+          <li>Verbal or short written brief</li>
+          <li>No standing engagement required</li>
+        </ul>
+      </article>
+
+      <article class="tier rv">
+        <span class="num">02</span>
+        <h3>Review</h3>
+        <p class="tier-meta">Four to eight weeks</p>
+        <p>A scoped piece of work with written findings — a programme review, a technical audit, or a strategy assessment ahead of a funding decision.</p>
+        <ul>
+          <li>Structured findings document</li>
+          <li>Scope and deliverable fixed at the outset</li>
+        </ul>
+      </article>
+
+      <article class="tier rv">
+        <span class="num">03</span>
+        <h3>Standing advisor</h3>
+        <p class="tier-meta">Retained, ongoing</p>
+        <p>A seat on a scientific advisory board or consortium, for organisations that need continuity of judgement across a programme's life — not a one-off view.</p>
+        <ul>
+          <li>Agreed cadence of engagement</li>
+          <li>Renewable term</li>
         </ul>
       </article>
     </div>
+
+    <p class="muted" style="margin-top:var(--space-8);font-size:var(--text-sm)">Every engagement starts with a short, no-cost scoping call to confirm fit before anything is agreed. <a href="#contact">Get in touch</a> to start that conversation.</p>
   </div>
 </section>
 
@@ -655,6 +713,37 @@ footer.site a:hover { color: var(--ink); }
   </div>
 </section>
 
+<!-- ============ LATEST THINKING ============ -->
+<section id="thinking">
+  <div class="wrap">
+    <p class="eyebrow">Latest thinking</p>
+    <h2 style="font-size:var(--text-xl);max-width:24ch">Essays on Substack, for the arguments that don't fit in a paper.</h2>
+    <p class="muted" style="font-size:var(--text-sm);margin-top:var(--space-4);max-width:56ch">Longer-form writing on Africa's scientific and health sovereignty, published as DiseaseChaser on Substack.</p>
+
+    <ul class="pubs">
+      <li class="pub rv"><a href="https://diseasechaser.substack.com/" target="_blank" rel="noopener">
+        <span class="yr">Jul 2026</span>
+        <h3>Building Wakanda Valley: Africa's Path to Scientific and Technological Sovereignty</h3>
+        <span class="jr">Substack</span>
+      </a></li>
+      <li class="pub rv"><a href="https://diseasechaser.substack.com/" target="_blank" rel="noopener">
+        <span class="yr">Jul 2026</span>
+        <h3>History Must Not Excuse</h3>
+        <span class="jr">Substack</span>
+      </a></li>
+      <li class="pub rv"><a href="https://diseasechaser.substack.com/" target="_blank" rel="noopener">
+        <span class="yr">Jul 2026</span>
+        <h3>Global Health's Comedy of Errors Has Real Human Costs</h3>
+        <span class="jr">Substack</span>
+      </a></li>
+    </ul>
+
+    <p style="margin-top:var(--space-8)">
+      <a class="btn ghost" href="https://diseasechaser.substack.com/" target="_blank" rel="noopener">Read more on Substack</a>
+    </p>
+  </div>
+</section>
+
 <!-- ============ SPEAKING ============ -->
 <section id="speaking" style="background:var(--surface);border-block:1px solid var(--line)">
   <div class="wrap split">
@@ -729,6 +818,10 @@ footer.site a:hover { color: var(--ink); }
       <p>His scientific grounding began in Ghana, where he led community-based public health outreach on sexually transmitted and neglected tropical diseases while completing a biology degree at KNUST in Kumasi — an experience that continues to inform his conviction that lasting health security must be built from the ground up, not imposed from the outside. A scholarship took him to Aarhus University in Denmark, then to Deakin University in Australia for doctoral research on Buruli ulcer, a disease still dismissed as witchcraft in parts of Ghana: an epidemiological update of cases in Victoria and a pilot serological screening test for community exposure, later formalised into a systematic review and meta-analysis of the field's diagnostic evidence.</p>
       <p>At the University of Queensland, his preclinical work on the molecular clamp vaccine platform contributed to a SARS-CoV-2 candidate that advanced to a phase 1 clinical trial and underpinned a technology later spun out as Vicebio, acquired by Sanofi in 2025 in a deal worth up to US$1.6 billion. He has since carried that same instinct for tracking outbreaks to their source into technical work on vaccine reference standards and biospecimen access for organisations including the Coalition for Epidemic Preparedness Innovations, across pathogens from Nipah virus to mpox and Marburg.</p>
       <p>It is this record — laboratory and field, Ghana to Denmark to Australia to the UK — that gave rise to DiseaseChaser. Selorm founded the practice to challenge the systems and assumptions that leave low- and middle-income countries perpetually reactive to health emergencies rather than structurally prepared for them, and to put hard-won technical expertise to independent use for the ministries, funders and communities carrying that burden. He is also a committed mentor to early-career scientists across Africa, Europe and Australia through MeetMentors.</p>
+      <div class="disclosure rv">
+        <p class="eyebrow">Independence &amp; conflicts of interest</p>
+        <p>DiseaseChaser is operated by Dr Avumegah in a personal capacity, independently of his employment at the Coalition for Epidemic Preparedness Innovations (CEPI). It draws on no CEPI confidential information, data or resources, is not undertaken on behalf of CEPI, and is not endorsed by CEPI or any other current or former employer. Institutional roles listed on this site, including at CEPI, are provided for professional background only.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -835,6 +928,7 @@ footer.site a:hover { color: var(--ink); }
       <p class="eyebrow">Enquiries</p>
       <h2>Bring me in before the plan is finished.</h2>
       <p class="lede muted" style="margin-top:var(--space-6);font-size:var(--text-base)">Short advisory reviews, standing technical advisory roles, speaking engagements and media commentary. Ministries of health, multilateral agencies, funders and implementing partners.</p>
+      <p class="muted" style="margin-top:var(--space-6);font-size:var(--text-sm);max-width:52ch">Advisory work in this field regularly touches sensitive health, sample and programme data. All engagements can be covered by an NDA or data-handling agreement on request, and no client information, samples or findings are shared, published or reused without written consent.</p>
     </div>
     <div>
       <dl>
@@ -851,6 +945,8 @@ footer.site a:hover { color: var(--ink); }
         <dd>United Kingdom · works globally</dd>
         <dt>Languages</dt>
         <dd>English <span class="muted">— add others</span></dd>
+        <dt>Privacy</dt>
+        <dd>NDA available on request</dd>
       </dl>
       <p style="margin-top:var(--space-8)"><a class="btn" href="mailto:Selorm.Avumegah1@outlook.com?subject=Advisory%20enquiry">Start a conversation</a></p>
     </div>
@@ -865,7 +961,8 @@ footer.site a:hover { color: var(--ink); }
     <span><a href="#evidence">Publications</a> · <a href="https://www.linkedin.com/in/selorm-avumegah-diseasechaser-06227842/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://diseasechaser.substack.com/" target="_blank" rel="noopener">Substack</a> · <a href="https://x.com/Avumegah" target="_blank" rel="noopener">X</a> · <a href="https://bsky.app/profile/selormavumegah.bsky.social" target="_blank" rel="noopener">Bluesky</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Avumegah+MS%5BAuthor%5D" target="_blank" rel="noopener">PubMed</a></span>
   </div>
   <div class="wrap">
-    <p class="draftnote">Draft. Copy on this site was compiled from publicly available sources — LinkedIn, PubMed, Public Health Ontario and the Global Health Council — and needs verification and sign-off before publication. DiseaseChaser is an independent advisory practice, not undertaken on behalf of, or with the endorsement of, any current or former employer. Prior roles are listed for professional background only; no conflict of interest is implied or intended.</p>
+    <p class="independence">DiseaseChaser is Dr Michael Selorm Avumegah's independent, personal-capacity advisory practice, operated separately from his employment at the Coalition for Epidemic Preparedness Innovations (CEPI). It draws on no CEPI confidential information, data or resources, and is not undertaken on behalf of, or endorsed by, CEPI or any other current or former employer.</p>
+    <p class="draftnote">Draft. Copy on this site was compiled from publicly available sources — LinkedIn, PubMed, Public Health Ontario and the Global Health Council — and needs verification and sign-off before publication.</p>
   </div>
 </footer>
 
