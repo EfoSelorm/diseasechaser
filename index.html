@@ -177,9 +177,11 @@ nav.main a:hover { color: var(--ink); border-color: var(--accent); }
 .hero .lede { margin-top: var(--space-6); font-family: var(--font-body); font-size: var(--text-base); color: var(--muted); max-width: 68ch; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-10); }
 
-.hero-image { margin-top: var(--space-16); }
-.hero-image img { width: 100%; height: clamp(220px, 34vw, 440px); object-fit: cover; filter: contrast(1.06) saturate(1.12) brightness(1.01); }
+.hero-gallery { margin-top: var(--space-16); display: grid; grid-template-columns: 1.6fr 1fr; gap: var(--space-6); }
+.hero-image img { width: 100%; height: clamp(220px, 34vw, 440px); object-fit: cover; filter: contrast(1.06) saturate(1.12) brightness(1.01); border-radius: var(--radius); }
+.hero-image-sm img { height: clamp(220px, 34vw, 440px); }
 [data-theme='dark'] .hero-image img { filter: contrast(1.1) saturate(1.05) brightness(0.94); }
+@media (max-width: 800px) { .hero-gallery { grid-template-columns: 1fr; } }
 .figcap { font-size: var(--text-xs); color: var(--faint); margin-top: var(--space-3); letter-spacing: 0.01em; max-width: 62ch; font-family: var(--font-body); }
 
 /* ---------- Stats ---------- */
@@ -263,6 +265,9 @@ nav.main a:hover { color: var(--ink); border-color: var(--accent); }
 .talk p a:hover { text-decoration-color: var(--accent); }
 
 .topics { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-8); }
+.speaking-image { margin-top: var(--space-10); }
+.speaking-image img { width: 100%; height: clamp(200px, 22vw, 300px); object-fit: cover; border-radius: var(--radius); filter: contrast(1.06) saturate(1.08); }
+[data-theme='dark'] .speaking-image img { filter: contrast(1.1) saturate(1.02) brightness(0.94); }
 .tag { font-size: var(--text-xs); border: 1px solid var(--line); padding: 0.45rem 0.85rem; border-radius: var(--radius); color: var(--muted); }
 
 /* ---------- Timeline ---------- */
@@ -276,6 +281,36 @@ nav.main a:hover { color: var(--ink); border-color: var(--accent); }
 /* ---------- Recommendations ---------- */
 .recommend-note { display: flex; align-items: flex-start; gap: var(--space-3); font-size: var(--text-xs); color: var(--muted); margin-top: var(--space-6); padding: var(--space-4); border: 1px solid var(--line); background: var(--bg); max-width: 62ch; }
 .recommend-note svg { flex: none; margin-top: 2px; opacity: 0.6; }
+
+/* ---------- Upcoming events ---------- */
+.events-list { margin-top: var(--space-10); border-top: 1px solid var(--line); }
+.event-row { display: grid; grid-template-columns: 84px 1fr auto; gap: var(--space-6); align-items: center; padding-block: var(--space-6); border-bottom: 1px solid var(--line); }
+.event-date { text-align: center; }
+.event-date .d { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 600; line-height: 1; display: block; }
+.event-date .m { font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.event-body h3 { font-size: var(--text-base); font-family: var(--font-display); font-weight: 600; margin: 0 0 var(--space-1); }
+.event-body h3 a { color: inherit; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
+.event-body h3 a:hover { text-decoration-color: var(--accent); }
+.event-body p { margin: 0; font-size: var(--text-sm); color: var(--muted); }
+.event-countdown { font-size: var(--text-xs); color: var(--accent); border: 1px solid var(--line); padding: 0.4rem 0.85rem; border-radius: var(--radius); white-space: nowrap; }
+@media (max-width: 640px) {
+  .event-row { grid-template-columns: 52px 1fr; row-gap: var(--space-3); }
+  .event-countdown { grid-column: 1 / -1; justify-self: start; }
+}
+
+/* ---------- Current projects ---------- */
+.proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-6); margin-top: var(--space-10); }
+.proj-card { border: 1px solid var(--line); border-radius: var(--radius); padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-3); background: var(--bg); transition: border-color .25s ease, transform .25s ease; }
+.proj-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.proj-status { align-self: flex-start; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.08em; padding: 0.3rem 0.7rem; border-radius: var(--radius); border: 1px solid var(--line); color: var(--muted); }
+.proj-status.is-active { color: var(--accent); border-color: var(--accent); }
+.proj-card h3 { font-size: var(--text-base); font-family: var(--font-display); font-weight: 600; }
+.proj-card p { margin: 0; font-size: var(--text-sm); color: var(--muted); }
+.proj-region { font-size: var(--text-xs); color: var(--faint); text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* ---------- Quote of the day ---------- */
+.qotd blockquote { max-width: 44ch; margin-top: var(--space-6); transition: opacity .4s ease; }
+.qotd-author { margin-top: var(--space-6); font-size: var(--text-sm); color: color-mix(in srgb, var(--inverse-ink) 68%, transparent); }
 
 /* ---------- Contact ---------- */
 .contact { background: var(--surface); border-top: 1px solid var(--line); }
@@ -354,7 +389,9 @@ footer.site a:hover { color: var(--ink); }
       <a href="#pathogens">Field record</a>
       <a href="#evidence">Evidence</a>
       <a href="#speaking">Speaking</a>
+      <a href="#events">Events</a>
       <a href="#founder">Founder</a>
+      <a href="#projects">Projects</a>
       <a href="#recommendations">Recommendations</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -385,17 +422,23 @@ footer.site a:hover { color: var(--ink); }
     <div class="hero-top">
       <p class="eyebrow">DiseaseChaser · Global health advisory &amp; consultancy</p>
       <h1>The outbreak is <em>never</em> only a virus.</h1>
-      <p class="lede">DiseaseChaser is the independent advisory practice built on a grass-roots view of disease prevention: that an epidemic response is decided long before a crisis makes headlines — in surveillance quality, exposure-screening capability, vaccine standards and who holds the samples. That view was formed in the field, in an epidemiological study of Buruli ulcer cases across Victoria, Australia, and the development of one of the first pilot serological screening tests for community exposure to the disease, later carried into a systematic review and meta-analysis of the wider diagnostic evidence base. DiseaseChaser applies that same discipline — go to where the evidence is being made, test what actually works, then build the standard — for governments, funders and multilateral agencies working the unglamorous machinery of outbreak response: surveillance, vaccine development standards, biospecimen access, and who owns the samples.</p>
+      <p class="lede">DiseaseChaser is the independent advisory practice built on a grass-roots view of disease prevention: that an epidemic response is decided long before a crisis makes headlines — in surveillance quality, exposure-screening capability, vaccine candidates and who holds the samples. That view was formed in the field, in an epidemiological study of Buruli ulcer cases across Victoria, Australia, and the development of one of the first pilot serological screening tests for community exposure to the disease, later carried into a systematic review and meta-analysis of the wider diagnostic evidence base. DiseaseChaser applies that same discipline — go to where the evidence is being made, test what actually works, then build the standard — for governments, funders and multilateral agencies working the unglamorous machinery of outbreak response: surveillance, vaccine development standards, biospecimen access, and who owns the samples.</p>
       <div class="hero-actions">
         <a class="btn" href="#contact">Request a briefing</a>
         <a class="btn ghost" href="#evidence">Read the evidence</a>
       </div>
     </div>
 
-    <figure class="hero-image rv">
-      <img src="assets/hero.jpg" alt="Cryovials in a field sample rack against a warm, sunlit savanna landscape at dawn" width="1672" height="941">
-      <figcaption class="figcap">Field sampling, dawn. The sample is the beginning of every answer — and the point where most outbreak responses quietly fail.</figcaption>
-    </figure>
+    <div class="hero-gallery rv">
+      <figure class="hero-image">
+        <img src="assets/hero.jpg" alt="Cryovials in a field sample rack against a warm, sunlit savanna landscape at dawn" width="1672" height="941">
+        <figcaption class="figcap">Field sampling, dawn. The sample is the beginning of every answer — and the point where most outbreak responses quietly fail.</figcaption>
+      </figure>
+      <figure class="hero-image hero-image-sm">
+        <img src="assets/field-engagement.jpg" alt="Illustrative field scene: a health worker explains a screening result to a community member outside a rural clinic at golden hour" width="1774" height="887" loading="lazy">
+        <figcaption class="figcap">Illustrative — the fight against neglected tropical diseases is won or lost at this scale: one explanation, one household, at a time.</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
@@ -403,9 +446,9 @@ footer.site a:hover { color: var(--ink); }
 <div class="stats">
   <div class="wrap">
     <div class="stat"><b>15+</b><span>Years in infectious disease</span></div>
-    <div class="stat"><b>14</b><span>Peer-reviewed papers</span></div>
+    <div class="stat"><b>30+</b><span>Publications</span></div>
     <div class="stat"><b>4</b><span>Continents worked</span></div>
-    <div class="stat"><b>6</b><span>Priority pathogens</span></div>
+    <div class="stat"><b>6+</b><span>Priority pathogens</span></div>
   </div>
 </div>
 
@@ -417,7 +460,7 @@ footer.site a:hover { color: var(--ink); }
       <h2>An advisory practice for the moment before an outbreak becomes a crisis.</h2>
     </div>
     <div class="prose rv">
-      <p>The name DiseaseChaser began as a description colleagues used for someone who kept turning up wherever a pathogen was doing the most damage — Buruli ulcer wards in rural Ghana and Victoria, a molecular clamp vaccine platform racing to answer COVID-19, mpox cohorts in Uganda, Nipah survivor communities in Bangladesh. It has since become something more deliberate: a professional commitment to preventing disease among the most at-risk populations through appropriate and effective means, wherever geography, funding or politics would otherwise leave them exposed.</p>
+      <p>DiseaseChaser began as a phrase Dr Michael Selorm Avumegah coined for himself — a personal commitment to keep showing up and fighting neglected tropical diseases. It has since grown into a recognised name. It started long before the branding: in community-based outreach on neglected tropical diseases in Ghana, in Buruli ulcer wards across rural Ghana and Victoria, Australia, and in the conviction that these diseases stay neglected largely because the people carrying them are too. That same instinct for turning up where a pathogen was doing the most damage later carried him into mpox cohorts in Uganda, Nipah survivor communities in Bangladesh, and a molecular clamp vaccine platform racing to answer COVID-19. What began as one person's refusal to look away has become something more deliberate: a professional commitment to preventing disease among the most at-risk populations through appropriate and effective means, wherever geography, funding or politics would otherwise leave them exposed.</p>
       <p>We work with ministries of health, multilateral agencies, funders and implementing partners on the technical and governance layer that decides whether a pandemic response actually functions — surveillance quality, vaccine development standards, biospecimen custody, and who holds the leverage when a sample crosses a border. Engagements range from a half-day briefing to a retained seat on a scientific advisory board, but the standard is constant: judgement independent enough to say the uncomfortable thing, and technical enough that a ministry, funder or agency can act on it.</p>
       <p>The sections below set out how — our advisory practice, our field record, and the evidence behind it.</p>
     </div>
@@ -566,9 +609,14 @@ footer.site a:hover { color: var(--ink); }
 <section id="evidence">
   <div class="wrap">
     <p class="eyebrow">Selected evidence</p>
-    <h2 style="font-size:var(--text-xl);max-width:20ch">Fourteen peer-reviewed papers. Six that best show the range.</h2>
+    <h2 style="font-size:var(--text-xl);max-width:20ch">30+ peer-reviewed papers. Seven that best show the range.</h2>
 
     <ul class="pubs">
+      <li class="pub rv"><a href="https://www.nature.com/articles/s44360-025-00014-9" target="_blank" rel="noopener">
+        <span class="yr">2026</span>
+        <h3>Research and development priorities for Nipah virus outbreak preparedness</h3>
+        <span class="jr">Nature Health</span>
+      </a></li>
       <li class="pub rv"><a href="https://pubmed.ncbi.nlm.nih.gov/42372777/" target="_blank" rel="noopener">
         <span class="yr">2026</span>
         <h3>Saliva versus lesion swabs for PCR diagnosis of acute-phase clade Ib mpox in Uganda: a prospective matched hospital cohort study</h3>
@@ -614,6 +662,10 @@ footer.site a:hover { color: var(--ink); }
       <p class="eyebrow">Speaking &amp; convening</p>
       <h2>Available for keynotes, expert panels, technical rounds and media commentary.</h2>
       <p class="muted" style="font-size:var(--text-sm);margin-top:var(--space-5);max-width:38ch">I speak in plain language without thinning the science, and I am comfortable in front of ministries, scientific audiences and community groups on the same day.</p>
+      <figure class="speaking-image rv">
+        <img src="assets/keynote.jpg" alt="Illustrative editorial photograph of a keynote speaker addressing an audience under warm stage lighting" width="1717" height="916" loading="lazy">
+        <figcaption class="figcap">Illustrative — plain language, on the record, in front of the audience that needs to hear it.</figcaption>
+      </figure>
     </div>
     <div>
       <div class="talks" style="margin-top:0">
@@ -642,8 +694,22 @@ footer.site a:hover { color: var(--ink); }
         <span class="tag">Neglected tropical diseases in a pandemic-funded world</span>
         <span class="tag">What Nipah survivors know that our protocols do not</span>
         <span class="tag">Building a scientific workforce across Africa</span>
+        <span class="tag">Building Wakanda Valley: Africa's path to scientific and technological sovereignty</span>
+        <span class="tag">Why colonial history cannot be the whole explanation</span>
+        <span class="tag">Global health's comedy of errors, and its real human cost</span>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============ UPCOMING EVENTS ============ -->
+<section id="events">
+  <div class="wrap">
+    <p class="eyebrow">Upcoming events</p>
+    <h2 style="font-size:var(--text-xl);max-width:26ch">Where to see me next.</h2>
+    <p class="muted" style="font-size:var(--text-sm);margin-top:var(--space-4);max-width:56ch">Confirmed talks, panels and convenings, with a live countdown. Dates are managed in one place and this list updates itself as events pass.</p>
+    <div class="events-list" id="events-list"></div>
+    <p class="muted" id="events-empty" style="display:none;font-size:var(--text-sm);margin-top:var(--space-8)">No events currently scheduled — check back soon, or see the speaking archive above.</p>
   </div>
 </section>
 
@@ -725,6 +791,25 @@ footer.site a:hover { color: var(--ink); }
   </div>
 </section>
 
+<!-- ============ CURRENT PROJECTS ============ -->
+<section id="projects" style="background:var(--surface);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <p class="eyebrow">Current projects</p>
+    <h2 style="font-size:var(--text-xl);max-width:26ch">What I'm working on right now.</h2>
+    <p class="muted" style="font-size:var(--text-sm);margin-top:var(--space-4);max-width:56ch">A live snapshot of active advisory and research work, updated as engagements open and close.</p>
+    <div class="proj-grid" id="projects-grid"></div>
+  </div>
+</section>
+
+<!-- ============ QUOTE OF THE DAY ============ -->
+<section class="band qotd">
+  <div class="wrap">
+    <p class="eyebrow">Quote of the day</p>
+    <blockquote id="qotd-text">Loading…</blockquote>
+    <p id="qotd-author" class="qotd-author"></p>
+  </div>
+</section>
+
 <!-- ============ RECOMMENDATIONS ============ -->
 <section id="recommendations" style="background:var(--surface);border-block:1px solid var(--line)">
   <div class="wrap split">
@@ -794,6 +879,101 @@ footer.site a:hover { color: var(--ink); }
     dark = !dark;
     root.setAttribute('data-theme', dark ? 'dark' : 'light');
   });
+
+  /* ================================================================
+     ADMIN-EDITABLE CONTENT
+     Website administrators can update the site's Upcoming Events,
+     Current Projects and Quote of the Day sections by editing the
+     three lists below — no other part of the page needs to change.
+
+     - Add a new item: copy an existing { ... } block, keep the commas.
+     - Remove an item: delete its whole { ... } block.
+     - Dates must use the YYYY-MM-DD format (e.g. 2026-11-03).
+     - Leave "link" as '' (two quote marks) if there is no URL yet.
+     ================================================================ */
+
+  // No confirmed future events yet — left empty deliberately rather than
+  // invented. Add real, confirmed dates only. Example format:
+  // { date: '2026-11-03', title: 'Talk title', location: 'Venue, city', link: 'https://...' },
+  var UPCOMING_EVENTS = [
+  ];
+
+  // Independent-practice projects only — deliberately excludes named,
+  // currently active employer programmes to avoid using employer work as
+  // commercial marketing content. Replace/add items as real work changes.
+  var CURRENT_PROJECTS = [
+    { title: 'Wakanda Valley essay series', status: 'Active', region: 'Pan-African · Substack', description: 'Ongoing essays on Africa’s path to scientific and technological sovereignty.' },
+    { title: 'MeetMentors advisory', status: 'Active', region: 'Africa, Europe, Australia', description: 'Mentorship and scientific-training programme design for early-career researchers.' },
+    { title: 'Independent advisory intake', status: 'Open', region: 'Global', description: 'Currently accepting new advisory engagements with governments, funders and multilateral agencies — get in touch to discuss scope.' }
+  ];
+
+  var QUOTES_OF_THE_DAY = [
+    { text: 'The outbreak is never only a virus. It is also who was watching, and who was heard.', author: 'Dr Michael Selorm Avumegah' },
+    { text: 'Neglected tropical diseases stay neglected largely because the people carrying them are too.', author: 'Dr Michael Selorm Avumegah' },
+    { text: 'Standards are invisible infrastructure — nobody notices them until an outbreak proves they were missing.', author: 'Dr Michael Selorm Avumegah' },
+    { text: 'Samples travel north faster than capability travels south.', author: 'Dr Michael Selorm Avumegah' },
+    { text: 'History should tell us where we started, not excuse where we stayed.', author: 'Dr Michael Selorm Avumegah' },
+    { text: 'Go to where the evidence is being made, test what actually works, then build the standard.', author: 'Dr Michael Selorm Avumegah' }
+  ];
+
+  // Upcoming events — auto-hides anything already in the past, sorts by
+  // date, and shows a live countdown so the section always looks current.
+  var eventsList = document.getElementById('events-list');
+  var eventsEmpty = document.getElementById('events-empty');
+  if (eventsList) {
+    var today = new Date();
+    var future = UPCOMING_EVENTS
+      .filter(function (ev) { return new Date(ev.date + 'T23:59:59') >= today; })
+      .sort(function (a, b) { return new Date(a.date) - new Date(b.date); });
+    if (future.length === 0) {
+      eventsEmpty.style.display = 'block';
+    } else {
+      future.forEach(function (ev, i) {
+        var d = new Date(ev.date + 'T00:00:00');
+        var days = Math.ceil((d - today) / 86400000);
+        var countdown = days <= 0 ? 'Today' : (days === 1 ? 'In 1 day' : 'In ' + days + ' days');
+        var titleHtml = ev.link
+          ? '<a href="' + ev.link + '" target="_blank" rel="noopener">' + ev.title + '</a>'
+          : ev.title;
+        var row = document.createElement('div');
+        row.className = 'event-row rv';
+        row.style.transitionDelay = (Math.min(i % 4, 3) * 70) + 'ms';
+        row.innerHTML =
+          '<div class="event-date"><span class="d">' + d.getDate() + '</span><span class="m">' + d.toLocaleDateString('en-GB', { month: 'short' }) + ' ' + d.getFullYear() + '</span></div>' +
+          '<div class="event-body"><h3>' + titleHtml + '</h3><p>' + ev.location + '</p></div>' +
+          '<span class="event-countdown">' + countdown + '</span>';
+        eventsList.appendChild(row);
+      });
+    }
+  }
+
+  // Current projects — rendered as a card grid from the list above.
+  var projGrid = document.getElementById('projects-grid');
+  if (projGrid) {
+    CURRENT_PROJECTS.forEach(function (p, i) {
+      var statusClass = /active/i.test(p.status) ? 'proj-status is-active' : 'proj-status';
+      var card = document.createElement('article');
+      card.className = 'proj-card rv';
+      card.style.transitionDelay = (Math.min(i % 4, 3) * 70) + 'ms';
+      card.innerHTML =
+        '<span class="' + statusClass + '">' + p.status + '</span>' +
+        '<h3>' + p.title + '</h3>' +
+        '<p>' + p.description + '</p>' +
+        '<span class="proj-region">' + p.region + '</span>';
+      projGrid.appendChild(card);
+    });
+  }
+
+  // Quote of the day — picks one deterministically based on today's date,
+  // so it changes daily but stays the same for every visitor on a given day.
+  var qotdText = document.getElementById('qotd-text');
+  var qotdAuthor = document.getElementById('qotd-author');
+  if (qotdText && QUOTES_OF_THE_DAY.length) {
+    var dayIndex = Math.floor(Date.now() / 86400000) % QUOTES_OF_THE_DAY.length;
+    var todayQuote = QUOTES_OF_THE_DAY[dayIndex];
+    qotdText.textContent = todayQuote.text;
+    qotdAuthor.textContent = '— ' + todayQuote.author;
+  }
 
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
