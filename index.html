@@ -150,6 +150,7 @@ header.site {
 .bar { display: flex; align-items: center; gap: var(--space-6); height: 72px; }
 .brand { display: flex; align-items: center; gap: var(--space-3); text-decoration: none; margin-right: auto; }
 .brand svg { color: var(--ink); flex: none; opacity: 0.75; }
+.brand-mark { flex: none; object-fit: contain; }
 .brand b { font-family: var(--font-display); font-size: 1.0625rem; font-weight: 600; letter-spacing: -0.005em; display: block; line-height: 1.1; }
 .brand span { font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-family: var(--font-body); }
 
@@ -398,10 +399,7 @@ footer.site .independence { font-size: var(--text-xs); color: var(--muted); line
 <header class="site">
   <div class="wrap bar">
     <a class="brand" href="index.html" aria-label="DiseaseChaser — home">
-      <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <circle cx="16" cy="16" r="15" stroke="currentColor" stroke-width="1.2" opacity="0.35"/>
-        <path d="M5 21.5 L10.5 21.5 L13.5 10.5 L17.5 25 L20.5 17.5 L27 17.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+      <img src="assets/logo-mark.png" width="40" height="23" alt="" class="brand-mark" aria-hidden="true">
       <span style="display:block">
         <b>DiseaseChaser</b>
         <span class="tagline">Global health advisory &amp; consultancy</span>
