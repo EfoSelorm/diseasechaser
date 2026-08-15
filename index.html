@@ -154,13 +154,35 @@ header.site {
 .brand b { font-family: var(--font-display); font-size: 1.0625rem; font-weight: 600; letter-spacing: -0.005em; display: block; line-height: 1.1; }
 .brand span { font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-family: var(--font-body); }
 
-nav.main { display: flex; gap: var(--space-6); }
-nav.main a {
-  font-size: var(--text-sm); text-decoration: none; color: var(--muted);
-  padding-block: var(--space-2); border-bottom: 1px solid transparent; transition: color .2s, border-color .2s;
-  letter-spacing: 0.01em; white-space: nowrap;
+.nav-dropdown { position: relative; }
+.nav-toggle {
+  display: flex; align-items: center; gap: var(--space-2);
+  font-size: var(--text-sm); font-weight: 600; color: var(--ink);
+  background: none; border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 0.55rem 1rem; cursor: pointer; letter-spacing: 0.01em;
+  font-family: var(--font-body); transition: border-color .2s, color .2s;
 }
-nav.main a:hover { color: var(--ink); border-color: var(--accent); }
+.nav-toggle:hover, .nav-toggle[aria-expanded="true"] { border-color: var(--accent); color: var(--ink); }
+.nav-toggle svg { flex: none; transition: transform .2s ease; }
+.nav-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+
+.nav-panel {
+  position: absolute; top: calc(100% + var(--space-3)); left: 0;
+  min-width: 240px; max-height: calc(100vh - 100px); overflow-y: auto;
+  background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: 0 16px 40px -10px rgba(0,0,0,0.3);
+  padding: var(--space-2); display: flex; flex-direction: column; gap: 1px;
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity .18s ease, transform .18s ease, visibility .18s;
+  z-index: 60;
+}
+.nav-panel.open { opacity: 1; visibility: visible; transform: translateY(0); }
+.nav-panel a {
+  font-size: var(--text-sm); text-decoration: none; color: var(--muted);
+  padding: 0.65rem var(--space-4); border-radius: calc(var(--radius) - 4px);
+  transition: background .15s, color .15s; letter-spacing: 0.01em; white-space: nowrap;
+}
+.nav-panel a:hover { color: var(--ink); background: var(--surface); }
 
 .header-social { display: flex; gap: var(--space-2); margin-right: var(--space-2); }
 
@@ -391,14 +413,10 @@ footer.site .independence { font-size: var(--text-xs); color: var(--muted); line
   .tl-row { grid-template-columns: 1fr; gap: var(--space-2); }
   .sticky-head { position: static; }
   .photo-placeholder { margin-inline: auto; }
-  .bar { flex-wrap: wrap; height: auto; padding-block: var(--space-3); row-gap: var(--space-2); }
-  nav.main {
-    order: 3; width: 100%; gap: var(--space-5);
-    overflow-x: auto; scrollbar-width: none;
-    border-top: 1px solid var(--line); padding-top: var(--space-2);
-  }
-  nav.main::-webkit-scrollbar { display: none; }
-  nav.main a { white-space: nowrap; font-size: var(--text-xs); }
+  .bar { height: auto; padding-block: var(--space-3); }
+  .nav-toggle span { display: none; }
+  .nav-toggle { padding: 0.55rem 0.7rem; }
+  .nav-panel { left: auto; right: 0; }
   .brand .tagline { display: none; }
 }
 
@@ -415,18 +433,25 @@ footer.site .independence { font-size: var(--text-xs); color: var(--muted); line
         <span class="tagline">Global health advisory &amp; consultancy</span>
       </span>
     </a>
-    <nav class="main">
-      <a href="#practice">Practice</a>
-      <a href="#pathogens">Field record</a>
-      <a href="#evidence">Evidence</a>
-      <a href="#speaking">Speaking</a>
-      <a href="#events">Events</a>
-      <a href="#founder">Founder</a>
-      <a href="#awards">Awards</a>
-      <a href="#projects">Projects</a>
-      <a href="#recommendations">Recommendations</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="nav-dropdown" id="navDropdown">
+      <button class="nav-toggle" id="navToggle" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="navPanel">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        <span>Menu</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="nav-panel" id="navPanel" role="menu">
+        <a href="#practice" role="menuitem">Practice</a>
+        <a href="#pathogens" role="menuitem">Field record</a>
+        <a href="#evidence" role="menuitem">Evidence</a>
+        <a href="#speaking" role="menuitem">Speaking</a>
+        <a href="#events" role="menuitem">Events</a>
+        <a href="#founder" role="menuitem">Founder</a>
+        <a href="#awards" role="menuitem">Awards</a>
+        <a href="#projects" role="menuitem">Projects</a>
+        <a href="#recommendations" role="menuitem">Recommendations</a>
+        <a href="#contact" role="menuitem">Contact</a>
+      </div>
+    </div>
     <div class="header-social">
       <a class="icon-btn" href="https://diseasechaser.substack.com/" target="_blank" rel="noopener" aria-label="Substack" title="Substack">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 6.5H2V4h20v2.5zM2 9.5v2.5h20V9.5H2zM2 15v9l10-5.5L22 24v-9H2z"/></svg>
@@ -1021,6 +1046,32 @@ footer.site .independence { font-size: var(--text-xs); color: var(--muted); line
   btn.addEventListener('click', function () {
     dark = !dark;
     root.setAttribute('data-theme', dark ? 'dark' : 'light');
+  });
+
+  /* ---- Nav dropdown menu ---- */
+  var navToggle = document.getElementById('navToggle');
+  var navPanel = document.getElementById('navPanel');
+  var navDropdown = document.getElementById('navDropdown');
+  function closeNav() {
+    navPanel.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }
+  function openNav() {
+    navPanel.classList.add('open');
+    navToggle.setAttribute('aria-expanded', 'true');
+  }
+  navToggle.addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (navPanel.classList.contains('open')) { closeNav(); } else { openNav(); }
+  });
+  navPanel.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', closeNav);
+  });
+  document.addEventListener('click', function (e) {
+    if (!navDropdown.contains(e.target)) { closeNav(); }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { closeNav(); }
   });
 
   /* ================================================================
