@@ -288,12 +288,22 @@ nav.main a:hover { color: var(--ink); border-color: var(--accent); }
 .speaking-image { margin-top: var(--space-10); }
 .speaking-image img { width: 100%; height: clamp(200px, 22vw, 300px); object-fit: cover; border-radius: var(--radius); filter: contrast(1.06) saturate(1.08); }
 [data-theme='dark'] .speaking-image img { filter: contrast(1.1) saturate(1.02) brightness(0.94); }
+
+/* ---------- Award gallery & press ---------- */
+.award-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-8); }
+.award-gallery img { width: 100%; height: clamp(180px, 20vw, 260px); object-fit: contain; background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); padding: var(--space-4); }
+.figcap-wrap { margin: 0; }
+.press-quote { margin: var(--space-4) 0 0; font-size: var(--text-base); font-family: var(--font-display); font-style: italic; color: var(--ink); max-width: 68ch; line-height: 1.5; border-left: 2px solid var(--accent); padding-left: var(--space-6); }
+.press-quote a { color: inherit; }
 .tag { font-size: var(--text-xs); border: 1px solid var(--line); padding: 0.45rem 0.85rem; border-radius: var(--radius); color: var(--muted); }
 
 /* ---------- Timeline ---------- */
 .tl { margin-top: var(--space-12); border-top: 1px solid var(--line); }
 .tl-row { display: grid; grid-template-columns: 170px 1fr; gap: var(--space-6); padding-block: var(--space-8); border-bottom: 1px solid var(--line); }
 .tl-row .yr { font-size: var(--text-xs); letter-spacing: 0.05em; color: var(--faint); padding-top: 0.3em; font-family: var(--font-body); }
+.duration-badge { display: inline-flex; align-items: baseline; align-self: start; justify-self: start; gap: 0.4em; font-size: var(--text-xs); letter-spacing: 0.06em; color: var(--ink); border: 1px solid var(--line); padding: 0.3em 0.7em; border-radius: 999px; font-family: var(--font-body); font-weight: 600; width: fit-content; height: fit-content; margin-top: 0.3em; }
+.duration-badge .unit { font-weight: 400; color: var(--muted); letter-spacing: 0.03em; }
+.duration-badge.current { border-color: var(--accent); color: var(--accent); }
 .tl-row h3 { font-size: var(--text-base); font-family: var(--font-display); font-weight: 600; letter-spacing: 0; }
 .tl-row .org { font-size: var(--text-sm); color: var(--muted); margin-top: 2px; font-style: italic; font-family: var(--font-display); }
 .tl-row p { margin: var(--space-2) 0 0; font-size: var(--text-sm); color: var(--muted); max-width: 62ch; }
@@ -412,6 +422,7 @@ footer.site .independence { font-size: var(--text-xs); color: var(--muted); line
       <a href="#speaking">Speaking</a>
       <a href="#events">Events</a>
       <a href="#founder">Founder</a>
+      <a href="#awards">Awards</a>
       <a href="#projects">Projects</a>
       <a href="#recommendations">Recommendations</a>
       <a href="#contact">Contact</a>
@@ -771,6 +782,11 @@ footer.site .independence { font-size: var(--text-xs); color: var(--muted); line
           <h3>Availability and use of standards in vaccine development</h3>
           <p><a href="https://www.youtube.com/watch?v=F166JHhMqOU" target="_blank" rel="noopener">Vaccinology webinar</a> walking through the international reference standards behind comparable vaccine trial results across laboratories.</p>
         </article>
+        <article class="talk rv">
+          <span class="yr">Webinar</span>
+          <h3>Let's talk about COVID-19 and vaccines</h3>
+          <p>OMSU '04 webinar for the Ghanaian alumni community, hosted over Zoom, covering the state of COVID-19 vaccine development from inside a UQ trial team.</p>
+        </article>
       </div>
 
       <p class="eyebrow" style="margin-top:var(--space-12)">Talks I give</p>
@@ -815,6 +831,10 @@ footer.site .independence { font-size: var(--text-xs); color: var(--muted); line
       <p>Dr Michael Selorm Avumegah is a global health strategist, vaccinologist and the Founder and CEO of DiseaseChaser, a practice dedicated to advancing scientific sovereignty, outbreak preparedness and equitable health innovation across Africa and the Global South.</p>
       <p>His scientific grounding began in Ghana, where he led community-based public health outreach on sexually transmitted and neglected tropical diseases while completing a biology degree at KNUST in Kumasi — an experience that continues to inform his conviction that lasting health security must be built from the ground up, not imposed from the outside. A scholarship took him to Aarhus University in Denmark, then to Deakin University in Australia for doctoral research on Buruli ulcer, a disease still dismissed as witchcraft in parts of Ghana: an epidemiological update of cases in Victoria and a pilot serological screening test for community exposure, later formalised into a systematic review and meta-analysis of the field's diagnostic evidence.</p>
       <p>At the University of Queensland, his preclinical work on the molecular clamp vaccine platform contributed to a SARS-CoV-2 candidate that advanced to a phase 1 clinical trial and underpinned a technology later spun out as Vicebio, acquired by Sanofi in 2025 in a deal worth up to US$1.6 billion. He has since carried that same instinct for tracking outbreaks to their source into technical work on vaccine reference standards and biospecimen access for organisations including the Coalition for Epidemic Preparedness Innovations, across pathogens from Nipah virus to mpox and Marburg.</p>
+      <figure class="speaking-image">
+        <img src="assets/uq-molecular-clamp-team.jpg" alt="The UQ Molecular Clamp Vaccines Team outside the University of Queensland's Great Court" loading="lazy">
+        <figcaption class="figcap">The Molecular Clamp Vaccines Team, The University of Queensland. L&ndash;R: Summa Bibby, Eve Radunz, David Edwards, Martina Jones, Justin Goh, Marianne Gillard, Julia Lackenby, Ben Hughes, Kym Hoger, Christina Henderson, Christopher McMillan, Paul Young, Danushka Wijesundara, Selorm Avumegah, Ari Golbaz Hagh, Karen Hughes, Keith Chappell, Stacey Cheung, Daniel Watterson, Trent Munro, Naphak Modhiran.</figcaption>
+      </figure>
       <p>It is this record — laboratory and field, Ghana to Denmark to Australia to the UK — that gave rise to DiseaseChaser. Selorm founded the practice to challenge the systems and assumptions that leave low- and middle-income countries perpetually reactive to health emergencies rather than structurally prepared for them, and to put hard-won technical expertise to independent use for the ministries, funders and communities carrying that burden. He is also a committed mentor to early-career scientists across Africa, Europe and Australia through MeetMentors.</p>
       <div class="disclosure rv">
         <p class="eyebrow">Independence &amp; conflicts of interest</p>
@@ -829,18 +849,19 @@ footer.site .independence { font-size: var(--text-xs); color: var(--muted); line
   <div class="wrap">
     <p class="eyebrow">Track record</p>
     <h2 style="font-size:var(--text-xl);max-width:20ch">Kumasi to Aarhus to Geelong to Oslo to London.</h2>
+    <p class="muted" style="font-size:var(--text-sm);margin-top:var(--space-4);max-width:60ch">Six roles, one throughline: laboratory and field experience carried across four continents into standards, platforms and programmes that shape how the world prepares for outbreaks.</p>
 
     <div class="tl">
       <div class="tl-row rv">
-        <span class="yr">2022 — present</span>
+        <span class="duration-badge current">4+ <span class="unit">yrs · current</span></span>
         <div>
-          <h3>Project Lead &amp; Scientist</h3>
+          <h3>Programme Leader &amp; Scientist</h3>
           <div class="org">CEPI — Coalition for Epidemic Preparedness Innovations, Oslo &amp; London</div>
           <p>Programme lead for the Biospecimen Sourcing Initiative; subject-matter expert in early-stage vaccine development; leads projects developing WHO International Antibody Standards for priority pathogens.</p>
         </div>
       </div>
       <div class="tl-row rv">
-        <span class="yr">2017 — present</span>
+        <span class="duration-badge current">9+ <span class="unit">yrs · ongoing</span></span>
         <div>
           <h3>Research Advisor, previously Programs Advisor &amp; Mentor</h3>
           <div class="org">MeetMentors</div>
@@ -848,7 +869,7 @@ footer.site .independence { font-size: var(--text-xs); color: var(--muted); line
         </div>
       </div>
       <div class="tl-row rv">
-        <span class="yr">2019 — 2022</span>
+        <span class="duration-badge">3 <span class="unit">yrs</span></span>
         <div>
           <h3>Postdoctoral Research Fellow, previously Research Scientist</h3>
           <div class="org">The University of Queensland, Australia</div>
@@ -856,7 +877,7 @@ footer.site .independence { font-size: var(--text-xs); color: var(--muted); line
         </div>
       </div>
       <div class="tl-row rv">
-        <span class="yr">2014 — 2018</span>
+        <span class="duration-badge">4 <span class="unit">yrs</span></span>
         <div>
           <h3>PhD, Medical Microbiology &amp; Infectious Diseases</h3>
           <div class="org">Deakin University, Australia</div>
@@ -864,19 +885,44 @@ footer.site .independence { font-size: var(--text-xs); color: var(--muted); line
         </div>
       </div>
       <div class="tl-row rv">
-        <span class="yr">2012 — 2014</span>
+        <span class="duration-badge">2 <span class="unit">yrs</span></span>
         <div>
           <h3>MSc, Biology — Medical Microbiology &amp; Bacteriology</h3>
           <div class="org">Aarhus University, Denmark</div>
         </div>
       </div>
       <div class="tl-row rv">
-        <span class="yr">2007 — 2012</span>
+        <span class="duration-badge">5 <span class="unit">yrs</span></span>
         <div>
           <h3>BSc Biological Science; Teaching &amp; Research Assistant; STI Peer Educator</h3>
           <div class="org">Kwame Nkrumah University of Science and Technology, Kumasi, Ghana</div>
           <p>Early laboratory placements at the Noguchi Memorial Institute for Medical Research and the Ghana Food and Drugs Board, Takoradi.</p>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AWARDS & RECOGNITION ============ -->
+<section id="awards" style="background:var(--surface);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <p class="eyebrow">Selected awards &amp; recognition</p>
+    <h2 style="font-size:var(--text-xl);max-width:26ch">External recognition for the same work described above.</h2>
+    <div class="cards" style="margin-top:var(--space-10)">
+      <div class="card">
+        <span class="num">2022</span>
+        <h3>Certificate of Recognition, Vaccine Development</h3>
+        <p>Queensland African Communities Council</p>
+      </div>
+      <div class="card">
+        <span class="num">2021</span>
+        <h3>Award for Contribution to COVID-19 Vaccine</h3>
+        <p>Ghana High Commission, Australia</p>
+      </div>
+      <div class="card">
+        <span class="num">2020</span>
+        <h3>Excellence in Innovation Award</h3>
+        <p>The University of Queensland — awarded to the Molecular Clamp Vaccines Team</p>
       </div>
     </div>
   </div>
@@ -909,7 +955,9 @@ footer.site .independence { font-size: var(--text-xs); color: var(--muted); line
       <h2>Worked with me? I'd welcome a few words for the record.</h2>
     </div>
     <div class="prose rv">
-      <p>If we've worked together — on an advisory review, a research collaboration, a mentoring relationship or a speaking engagement — I'd welcome a short recommendation for this page. Send it by email using the link below, with your name and how we worked together.</p>
+      <blockquote class="press-quote" style="margin-top:0">&ldquo;Dr Selorm Avumegah, a Ghanaian-Australian and key team member at The University of Queensland in Australia, is working tirelessly on a vaccine for COVID-19&hellip; Now he's working in Brisbane to save human lives and find a solution to the COVID pandemic.&rdquo;</blockquote>
+      <p class="figcap" style="margin-top:var(--space-3)">Australian High Commission, Ghana &mdash; <a href="https://www.facebook.com/AustralianHighCommissionGhana/" target="_blank" rel="noopener">official Facebook page</a>, 25 September 2020.</p>
+      <p style="margin-top:var(--space-10)">If we've worked together — on an advisory review, a research collaboration, a mentoring relationship or a speaking engagement — I'd welcome a short recommendation for this page. Send it by email using the link below, with your name and how we worked together.</p>
       <p style="margin-top:var(--space-6)"><a class="btn ghost" href="mailto:Selorm.Avumegah1@outlook.com?subject=Recommendation%20for%20DiseaseChaser">Send a recommendation</a></p>
       <div class="recommend-note">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 16v-4M12 8h.01M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0z"/></svg>
