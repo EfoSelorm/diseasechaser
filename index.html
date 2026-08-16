@@ -271,11 +271,27 @@ header.site {
 .card ul { margin: var(--space-2) 0 0; padding-left: 1.1em; font-size: var(--text-sm); color: var(--muted); }
 .card li { margin-bottom: var(--space-1); }
 
-/* ---------- Pathogen list (names only) ---------- */
-.pathogens { margin-top: var(--space-12); border-top: 1px solid var(--line); }
-.path-row { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-6); padding-block: var(--space-6); border-bottom: 1px solid var(--line); }
-.path-row h3 { font-size: var(--text-lg); font-family: var(--font-display); font-weight: 600; }
-.path-row .yr { font-size: var(--text-xs); color: var(--faint); letter-spacing: 0.06em; text-align: right; text-transform: uppercase; font-family: var(--font-body); white-space: nowrap; }
+/* ---------- Areas of expertise (accordion) ---------- */
+.expertise-list { margin-top: var(--space-12); border-top: 1px solid var(--line); }
+.expertise-item { border-bottom: 1px solid var(--line); }
+.expertise-toggle {
+  display: flex; align-items: center; gap: var(--space-5); width: 100%;
+  background: none; border: none; padding: var(--space-6) 0; cursor: pointer;
+  text-align: left; font-family: inherit; color: var(--ink);
+}
+.exp-num { font-family: var(--font-display); font-size: var(--text-sm); color: var(--faint); flex: none; width: 2.4ch; }
+.exp-title { flex: 1; font-family: var(--font-display); font-size: var(--text-lg); font-weight: 600; line-height: 1.3; }
+.expertise-toggle svg { flex: none; color: var(--muted); transition: transform .25s ease; }
+.expertise-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+.expertise-toggle[aria-expanded="true"] .exp-title { color: var(--ink); }
+.expertise-panel { overflow: hidden; max-height: 0; transition: max-height .3s ease; }
+.expertise-panel-inner { padding: 0 0 var(--space-8) calc(2.4ch + var(--space-5)); }
+.exp-tags { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-5); }
+.exp-summary { font-size: var(--text-sm); color: var(--ink); max-width: 62ch; margin: 0 0 var(--space-5); }
+.exp-pubs { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+.exp-pubs li { font-size: var(--text-sm); color: var(--muted); line-height: 1.5; }
+.exp-pubs a { color: var(--muted); text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 2px; }
+.exp-pubs a:hover { color: var(--ink); text-decoration-color: var(--accent); }
 
 /* ---------- Quote band ---------- */
 .band { background: var(--inverse-bg); color: var(--inverse-ink); position: relative; overflow: hidden; }
@@ -348,6 +364,8 @@ header.site {
 @media (max-width: 640px) {
   .event-row { grid-template-columns: 52px 1fr; row-gap: var(--space-3); }
   .event-countdown { grid-column: 1 / -1; justify-self: start; }
+  .exp-title { font-size: var(--text-base); }
+  .expertise-panel-inner { padding-left: 0; }
 }
 
 /* ---------- Current projects ---------- */
@@ -407,7 +425,6 @@ footer.site .independence { font-size: var(--text-xs); color: var(--muted); line
   .cards { grid-template-columns: 1fr; }
   .card:nth-child(odd) { border-right: 0; padding-left: 0; }
   .card:nth-child(even) { padding-left: 0; }
-  .path-row { flex-direction: column; align-items: flex-start; gap: var(--space-1); }
   .pub a { grid-template-columns: 56px 1fr; }
   .pub .jr { grid-column: 2; text-align: left; }
   .tl-row { grid-template-columns: 1fr; gap: var(--space-2); }
@@ -441,7 +458,7 @@ footer.site .independence { font-size: var(--text-xs); color: var(--muted); line
       </button>
       <div class="nav-panel" id="navPanel" role="menu">
         <a href="#practice" role="menuitem">Practice</a>
-        <a href="#pathogens" role="menuitem">Field record</a>
+        <a href="#expertise" role="menuitem">Areas of expertise</a>
         <a href="#evidence" role="menuitem">Evidence</a>
         <a href="#speaking" role="menuitem">Speaking</a>
         <a href="#events" role="menuitem">Events</a>
@@ -505,7 +522,7 @@ footer.site .independence { font-size: var(--text-xs); color: var(--muted); line
     <div class="stat"><b>15+</b><span>Years in infectious disease</span></div>
     <div class="stat"><b>30+</b><span>Publications</span></div>
     <div class="stat"><b>4</b><span>Continents worked</span></div>
-    <div class="stat"><b>6+</b><span>Priority pathogens</span></div>
+    <div class="stat"><b>6</b><span>Areas of expertise</span></div>
   </div>
 </div>
 
@@ -662,19 +679,168 @@ footer.site .independence { font-size: var(--text-xs); color: var(--muted); line
   </div>
 </section>
 
-<!-- ============ PATHOGENS ============ -->
-<section id="pathogens">
+<!-- ============ AREAS OF EXPERTISE ============ -->
+<section id="expertise">
   <div class="wrap">
-    <p class="eyebrow">Field record</p>
-    <h2 style="font-size:var(--text-xl);max-width:22ch">Pathogens I have worked on.</h2>
+    <p class="eyebrow">Areas of expertise</p>
+    <h2 style="font-size:var(--text-xl);max-width:26ch">Six domains, drawn from a 30+ paper publication record.</h2>
+    <p class="muted" style="margin-top:var(--space-4);max-width:62ch;font-size:var(--text-sm)">Grouped by research theme, leadership activity and scientific contribution across the publication record — not by any single pathogen. Select a domain to see the areas it covers and the publications behind it.</p>
 
-    <div class="pathogens">
-      <div class="path-row rv"><h3>Nipah virus</h3><span class="yr">2023 —</span></div>
-      <div class="path-row rv"><h3>Mpox, clade Ib</h3><span class="yr">2024 —</span></div>
-      <div class="path-row rv"><h3>SARS-CoV-2</h3><span class="yr">2020 – 2023</span></div>
-      <div class="path-row rv"><h3><em>Mycobacterium ulcerans</em> (Buruli ulcer)</h3><span class="yr">2014 – 2020</span></div>
-      <div class="path-row rv"><h3>Zika virus</h3><span class="yr">2025</span></div>
-      <div class="path-row rv"><h3>Marburg &amp; priority pathogens</h3><span class="yr">2022 —</span></div>
+    <div class="expertise-list">
+      <div class="expertise-item">
+        <button class="expertise-toggle rv" aria-expanded="false" aria-controls="exp-panel-1">
+          <span class="exp-num">01</span>
+          <span class="exp-title">Biospecimen Sourcing, Sample Collection &amp; Biobanking</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="expertise-panel" id="exp-panel-1">
+          <div class="expertise-panel-inner">
+            <div class="exp-tags">
+              <span class="tag">Global biospecimen acquisition and governance</span>
+              <span class="tag">Specimen-sharing frameworks</span>
+              <span class="tag">Outbreak sample collection strategies</span>
+              <span class="tag">Biobanking for epidemic preparedness</span>
+              <span class="tag">Survivor cohort sample access</span>
+            </div>
+            <p class="exp-summary">One of the strongest specialisations in the record: enabling equitable access to clinical specimens, establishing specimen-sharing frameworks, and strengthening outbreak preparedness through strategic biospecimen networks.</p>
+            <ul class="exp-pubs">
+              <li><a href="https://pubmed.ncbi.nlm.nih.gov/40024261/" target="_blank" rel="noopener">Specimen and data sharing to advance research and development on Zika virus</a> — The Lancet Microbe, 2025</li>
+              <li><a href="https://pubmed.ncbi.nlm.nih.gov/38688565/" target="_blank" rel="noopener">Rapid diagnostic test: a critical need for outbreak preparedness and response for high priority pathogens</a> — BMJ Global Health, 2024</li>
+              <li>Multiple CEPI-led outbreak-preparedness initiatives involving sample access and specimen sharing.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="expertise-item">
+        <button class="expertise-toggle rv" aria-expanded="false" aria-controls="exp-panel-2">
+          <span class="exp-num">02</span>
+          <span class="exp-title">Biological Standards &amp; Reference Materials Development</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="expertise-panel" id="exp-panel-2">
+          <div class="expertise-panel-inner">
+            <div class="exp-tags">
+              <span class="tag">WHO International Standards</span>
+              <span class="tag">Antibody reference materials</span>
+              <span class="tag">Biological standardisation</span>
+              <span class="tag">Vaccine assay harmonisation</span>
+              <span class="tag">Regulatory science</span>
+            </div>
+            <p class="exp-summary">Recognised expertise in coordinating international collaborative studies and developing biological reference materials used to standardise vaccine and diagnostic measurements globally.</p>
+            <ul class="exp-pubs">
+              <li><a href="https://pubmed.ncbi.nlm.nih.gov/37391580/" target="_blank" rel="noopener">Availability and use of standards in vaccine development</a> — npj Vaccines, 2023</li>
+              <li>First WHO International Standard for anti-Nipah virus antibody, 2023.</li>
+              <li>WHO International Standard for CCHFV antibodies, 2023.</li>
+              <li>WHO International Standard for Marburg virus antibodies, 2023.</li>
+              <li>WHO International Standard for Sudan virus antibodies, 2023.</li>
+              <li>WHO International Standard for SARS-CoV-1 antibodies, 2022.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="expertise-item">
+        <button class="expertise-toggle rv" aria-expanded="false" aria-controls="exp-panel-3">
+          <span class="exp-num">03</span>
+          <span class="exp-title">Emerging Infectious Disease Preparedness &amp; Epidemic Response</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="expertise-panel" id="exp-panel-3">
+          <div class="expertise-panel-inner">
+            <div class="exp-tags">
+              <span class="tag">Epidemic preparedness</span>
+              <span class="tag">High-priority pathogens</span>
+              <span class="tag">CEPI priority disease programmes</span>
+              <span class="tag">Research and development roadmaps</span>
+              <span class="tag">Public health emergency response</span>
+            </div>
+            <p class="exp-summary">Strategic leadership in preparedness for emerging pathogens, including Nipah virus, Zika virus, filoviruses and other epidemic threats.</p>
+            <ul class="exp-pubs">
+              <li><a href="https://www.nature.com/articles/s44360-025-00014-9" target="_blank" rel="noopener">Research and development priorities for Nipah virus outbreak preparedness</a> — Nature Health, 2026</li>
+              <li><a href="https://pubmed.ncbi.nlm.nih.gov/38688565/" target="_blank" rel="noopener">Rapid diagnostic test: a critical need for outbreak preparedness and response for high priority pathogens</a> — BMJ Global Health, 2024</li>
+              <li><a href="https://pubmed.ncbi.nlm.nih.gov/40024261/" target="_blank" rel="noopener">Specimen and data sharing to advance research and development on Zika virus</a> — The Lancet Microbe, 2025</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="expertise-item">
+        <button class="expertise-toggle rv" aria-expanded="false" aria-controls="exp-panel-4">
+          <span class="exp-num">04</span>
+          <span class="exp-title">Vaccine Development, Immunology &amp; Immune Responses</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="expertise-panel" id="exp-panel-4">
+          <div class="expertise-panel-inner">
+            <div class="exp-tags">
+              <span class="tag">Vaccine development</span>
+              <span class="tag">Immune correlates of protection</span>
+              <span class="tag">Antibody and cellular immunity</span>
+              <span class="tag">Immunological memory</span>
+              <span class="tag">Vaccine evaluation</span>
+            </div>
+            <p class="exp-summary">Substantial expertise in vaccine research, immune monitoring, long-term immune memory and immunological evaluation for emerging infectious diseases.</p>
+            <ul class="exp-pubs">
+              <li>Rapid application of the molecular clamp platform for SARS-CoV-2, 2020.</li>
+              <li>Preclinical development of a molecular clamp-stabilised subunit vaccine for SARS-CoV-2 — Clinical &amp; Translational Immunology, 2021.</li>
+              <li><a href="https://pubmed.ncbi.nlm.nih.gov/33887208/" target="_blank" rel="noopener">Safety and immunogenicity of an MF59-adjuvanted spike glycoprotein-clamp vaccine for SARS-CoV-2</a> — The Lancet Infectious Diseases, 2021</li>
+              <li>Malaysia outbreak survivors retain detectable Nipah antibodies and memory B cells after 25 years, 2025.</li>
+              <li>Persistent T cell immunity following Nipah virus infection, 2026.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="expertise-item">
+        <button class="expertise-toggle rv" aria-expanded="false" aria-controls="exp-panel-5">
+          <span class="exp-num">05</span>
+          <span class="exp-title">Clinical Research, Diagnostics &amp; Viral Pathogenesis</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="expertise-panel" id="exp-panel-5">
+          <div class="expertise-panel-inner">
+            <div class="exp-tags">
+              <span class="tag">Clinical cohort studies</span>
+              <span class="tag">Disease severity markers</span>
+              <span class="tag">Pathogenesis research</span>
+              <span class="tag">Host-pathogen interactions</span>
+              <span class="tag">Translational infectious disease research</span>
+            </div>
+            <p class="exp-summary">Translating outbreak observations into clinically relevant evidence, particularly for mpox, COVID-19 and other emerging viral diseases.</p>
+            <ul class="exp-pubs">
+              <li><a href="https://pubmed.ncbi.nlm.nih.gov/42372777/" target="_blank" rel="noopener">Saliva versus lesion swabs for PCR diagnosis of acute-phase clade Ib mpox in Uganda: a prospective matched hospital cohort study</a> — The Lancet Microbe, 2026</li>
+              <li>Further 2026 mpox studies from Uganda on viral burden, HIV-associated vulnerability, clinical severity markers, diagnostic strategies and microbiological characterisation.</li>
+              <li>SARS-CoV-2 drives NLRP3 inflammasome activation in human microglia, 2022–2023.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="expertise-item">
+        <button class="expertise-toggle rv" aria-expanded="false" aria-controls="exp-panel-6">
+          <span class="exp-num">06</span>
+          <span class="exp-title">Global Health, Survivor Research &amp; Neglected Tropical Diseases</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="expertise-panel" id="exp-panel-6">
+          <div class="expertise-panel-inner">
+            <div class="exp-tags">
+              <span class="tag">Global health policy</span>
+              <span class="tag">Neglected tropical diseases</span>
+              <span class="tag">Community engagement</span>
+              <span class="tag">Survivor studies</span>
+              <span class="tag">Health equity</span>
+            </div>
+            <p class="exp-summary">Combines biomedical research with a strong focus on patient outcomes, survivor experiences, health equity and neglected diseases affecting vulnerable populations.</p>
+            <ul class="exp-pubs">
+              <li>Mycobacterium ulcerans disease and host immune responses — New Advances in Neglected Tropical Diseases, 2022.</li>
+              <li><a href="https://pubmed.ncbi.nlm.nih.gov/42237299/" target="_blank" rel="noopener">"Nipah virus destroyed my personal, family, and social life": stories of the hardship faced by Nipah survivors in Bangladesh</a> — International Journal for Equity in Health, 2026</li>
+              <li>Long-term survivor immunity studies in Malaysia and Bangladesh.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
 
     <p style="margin-top:var(--space-8)">
@@ -1072,6 +1238,28 @@ footer.site .independence { font-size: var(--text-xs); color: var(--muted); line
   });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') { closeNav(); }
+  });
+
+  /* ---- Areas of expertise accordion ---- */
+  var expToggles = document.querySelectorAll('.expertise-toggle');
+  expToggles.forEach(function (btn) {
+    var panel = document.getElementById(btn.getAttribute('aria-controls'));
+    btn.addEventListener('click', function () {
+      var isOpen = btn.getAttribute('aria-expanded') === 'true';
+      expToggles.forEach(function (other) {
+        if (other !== btn) {
+          other.setAttribute('aria-expanded', 'false');
+          document.getElementById(other.getAttribute('aria-controls')).style.maxHeight = null;
+        }
+      });
+      if (isOpen) {
+        btn.setAttribute('aria-expanded', 'false');
+        panel.style.maxHeight = null;
+      } else {
+        btn.setAttribute('aria-expanded', 'true');
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+      }
+    });
   });
 
   /* ================================================================
